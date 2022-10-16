@@ -1,11 +1,11 @@
 import './index.css';
-import LetsFetch from "./component/LetsFetch";
+import SearchMovies from "./component/SearchMovies";
 import Footer from "./component/Footer"
 function App() {
   return (
     <div className="App">
       <h1>The Shoppies</h1>
-      <LetsFetch/>
+      <SearchMovies/>
       <Footer />
     </div>
   );
