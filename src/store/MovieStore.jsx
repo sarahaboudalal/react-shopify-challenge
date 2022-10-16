@@ -1,22 +1,19 @@
-import {configureStore} from '@reduxjs/toolkit';
+import { createContext, useState } from 'react';
 
-export const store = configureStore({
-    reducer: {
-        
-    }
-})
+const MovieStore = createContext();
 
+const MovieProvider = ({children}) => {
+    const [movies, setMovies] = useState();
+    const [error, setError] = useState();
+    const [nomMovies, setNomMovies] = useState();
+    return(
+        <MovieStore.Provider 
+        value={
+            { movies, setMovies, error, setError, nomMovies, setNomMovies}
+        }>
+        {children}
+        </MovieStore.Provider>
+    )
+};
 
-// const INITIAL_STATE = {
-//     movies: []
-// }
-
-// const movieReducer = (state, action) => {
-    
-// }
-
-// export const MoviesList = createContext({...INITIAL_STATE})
-// const MovieProvider = ({ children }) => {
-//     const [store, dispatch] = useReducer()
-// }
-
+export {MovieProvider, MovieStore}
