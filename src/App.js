@@ -3,6 +3,7 @@ import SearchMovies from "./component/SearchMovies";
 import Footer from "./component/Footer"
 import { MovieProvider } from './store/MovieStore';
 import SearchResults from './component/SearchResults';
+import NominatedList from './component/NominatedList';
 
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
       <h1>The Shoppies</h1>
       <SearchMovies />
       <SearchResults/>
+      <NominatedList/>
       <Footer />
       </MovieProvider>
     </div>
