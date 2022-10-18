@@ -5,7 +5,7 @@ const MovieStore = createContext();
 const MovieProvider = ({children}) => {
     const [movies, setMovies] = useState();
     const [error, setError] = useState();
-    const [nomMovies, setNomMovies] = useState();
+    const [nomMovies, setNomMovies] = useState([]);
     return(
         <MovieStore.Provider 
         value={

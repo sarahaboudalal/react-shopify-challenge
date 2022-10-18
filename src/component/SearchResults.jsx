@@ -5,14 +5,24 @@ import SingleMovie from "../component/SingleMovie"
 export default function SearchResults(){
 
 
-    const { movies, error } = useContext(MovieStore)
+    const { movies, error, setNomMovies } = useContext(MovieStore)
 
+    const nominate = (e, mov) =>{
+        const nomMovie ={
+            id: mov.imdbID,
+            img: mov.Poster,
+            title: mov.Title,
+            year: mov.Year
+        };
+        setNomMovies(nom => [...nom, nomMovie])
+        e.target.disabled = true;
+    }
 
     return(
         <div>
         <h1>Results:</h1>
         {movies && movies.Search ? movies.Search.slice(0, 5).map((movie) => {
-           return <SingleMovie key={movie.imdbID} img={movie.Poster} title={movie.Title} year={movie.Year}/> 
+           return <SingleMovie key={movie.imdbID} img={movie.Poster} title={movie.Title} year={movie.Year} nominate={(e) => nominate(e, movie)}/> 
         })
         : <p>{error}</p>}
         </div>
