@@ -16,7 +16,7 @@ export default function SearchMovies() {
     }
 
     return (
-        <div className="m-10">
+        <div>
         <h3 >Seach Movie Title</h3>
         <form 
         onSubmit={(e) => handleSubmit(e, keyID)}>

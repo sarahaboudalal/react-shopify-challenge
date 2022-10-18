@@ -7,7 +7,7 @@ export default function HomePage(){
 
     return(
         <div>
-        <h1 className="text-3xl font-bold underline">The Shoppies</h1>
+        <h1>The Shoppies</h1>
         <SearchMovies />
         <SearchResults />
         <NominatedList />

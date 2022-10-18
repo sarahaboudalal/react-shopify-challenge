@@ -19,7 +19,7 @@ export default function SearchResults(){
     }
 
     return(
-        <div>
+        <div className="movies-container">
         <h1>Results:</h1>
         {movies && movies.Search ? movies.Search.slice(0, 5).map((movie) => {
            return <SingleMovie key={movie.imdbID} img={movie.Poster} title={movie.Title} year={movie.Year} nominate={(e) => nominate(e, movie)}/> 
