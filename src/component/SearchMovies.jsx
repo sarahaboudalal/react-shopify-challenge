@@ -6,9 +6,9 @@ export default function SearchMovies() {
     const { setMovies, setError } = useContext(MovieStore);
 
 
-    const handleSubmit = async (e, title) => {
+    const handleSubmit = async (e, key) => {
         e.preventDefault();
-        const resp = await fetch(`http://www.omdbapi.com/?s=${title}&apikey=${process.env.REACT_APP_API_KEY}`)
+        const resp = await fetch(`http://www.omdbapi.com/?s=${key}&apikey=${process.env.REACT_APP_API_KEY}`)
         const data = await resp.json()
         setMovies(data)
         setError(data.Error)

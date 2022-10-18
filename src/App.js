@@ -1,19 +1,20 @@
 import './index.css';
-import SearchMovies from "./component/SearchMovies";
+import { Route, Routes } from 'react-router-dom';
 import Footer from "./component/Footer"
 import { MovieProvider } from './store/MovieStore';
-import SearchResults from './component/SearchResults';
-import NominatedList from './component/NominatedList';
+import HomePage from './pages/HomePage';
+import WinnerMoviePage from './pages/WinnerMoviePage';
+
 
 
 function App() {
   return (
     <div className="App">
     <MovieProvider>
-      <h1>The Shoppies</h1>
-      <SearchMovies />
-      <SearchResults/>
-      <NominatedList/>
+    <Routes>
+    <Route path='/' element={<HomePage/>}/>
+    <Route path='/winner-page' element={<WinnerMoviePage/>}/>
+    </Routes>
       <Footer />
       </MovieProvider>
     </div>
