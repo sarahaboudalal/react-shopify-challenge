@@ -1,30 +1,31 @@
-import {useState, useEffect, useContext} from "react"
+import {useState, useContext} from "react"
 import { MovieStore } from "../store/MovieStore";
 
 export default function SearchMovies() {
     const [keyID, setKeyID] = useState('')
-    const { setMovies, movies } = useContext(MovieStore);
-    const API_KEY = process.env.REACT_APP_API_KEY
-    const url = `http://www.omdbapi.com/?s=${keyID}&apikey=${API_KEY}`
+    const { setMovies, setError } = useContext(MovieStore);
 
-    useEffect(()=>{
-        fetch(url)
-        .then((resp) => resp.json())
-        .then((movies) => 
-        setMovies(movies))
-    }, [url, setMovies])
+
+    const handleSubmit = async (e, title) => {
+        e.preventDefault();
+        const resp = await fetch(`http://www.omdbapi.com/?s=${title}&apikey=${process.env.REACT_APP_API_KEY}`)
+        const data = await resp.json()
+        setMovies(data)
+        setError(data.Error)
+        setKeyID('')
+    }
 
     return (
         <div className="searchBar">
         <h3>Seach Movie Title</h3>
         <form 
-        onSubmit={(e)=> e.preventDefault()}>
+        onSubmit={(e) => handleSubmit(e, keyID)}>
         <input 
         placeholder="Movie Title" 
         value={keyID}
         onChange={(e) => setKeyID(e.target.value)}>
         </input>
-        <button type="submit" onClick={()=>console.log(movies)}>Search</button>
+        <button type="submit">Search</button>
         </form>
         </div>
     )
